@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# update upstream master
+git checkout upstream-master
+git pull
+
+# filter only the ssh commits
+git subtree split --prefix=ssh \
+	--onto upstream-ssh -b upstream-ssh
+
+# update local master by rebase
+git checkout pień
+git rebase upstream-ssh
