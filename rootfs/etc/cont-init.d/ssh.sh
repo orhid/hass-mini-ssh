@@ -34,11 +34,6 @@ if bashio::config.has_value 'authorized_keys'; then
     # Unlock account
     PASSWORD="$(pwgen -s 64 1)"
     echo "root:${PASSWORD}" | chpasswd 2&> /dev/null
-elif bashio::config.has_value 'password'; then
-    bashio::log.info "Setup password login"
-
-    PASSWORD=$(bashio::config 'password')
-    echo "root:${PASSWORD}" | chpasswd 2&> /dev/null
 elif bashio::var.has_value "$(bashio::addon.port 22)"; then
     bashio::exit.nok "You need to setup a login!"
 fi

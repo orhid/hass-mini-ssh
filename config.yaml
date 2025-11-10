@@ -1,48 +1,48 @@
----
-version: 9.20.1
-slug: ssh
-name: Terminal & SSH
-description: Allow logging in remotely to Home Assistant using SSH
-url: https://github.com/home-assistant/addons/tree/master/ssh
-advanced: true
+# description
+name: "mini-ssh"
+version: "0.1.0"
+slug: "ssh"
+description: "minimal ssh access to home assistant"
+codenotary: 9296944+orhid@users.noreply.github.com
+
 arch:
-  - armhf
-  - armv7
   - aarch64
   - amd64
+  - armhf
+  - armv7
   - i386
-audio: true
+
+
+# behaviour
+image: homeassistant/{arch}-addon-ssh
+startup: services
+
+init: false # use s6
+host_dbus: true
 hassio_api: true
 hassio_role: manager
-host_dbus: true
-image: homeassistant/{arch}-addon-ssh
-ingress: true
-init: false
-map:
-  - addons:rw
-  - all_addon_configs:rw
-  - backup:rw
-  - homeassistant_config:rw
-  - media:rw
-  - share:rw
-  - ssl:rw
-options:
-  authorized_keys: []
-  password: ""
-  apks: []
-  server:
-    tcp_forwarding: false
-panel_icon: mdi:console
-panel_title: Terminal
+
 ports:
   22/tcp: null
+map:
+  - ssl:rw
+  - homeassistant_config:rw
+  - addons:rw
+  - all_addon_configs:rw
+  - media:rw
+  - share:rw
+
+# options
+options:
+  authorized_keys: []
+  apks: []
 schema:
   authorized_keys:
     - str
-  password: password
   apks:
     - str
-  server:
-    tcp_forwarding: bool
-startup: services
-uart: true
+
+# ingress
+ingress: true
+panel_icon: mdi:console
+panel_title: terminal
