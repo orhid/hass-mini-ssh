@@ -13,7 +13,8 @@ RUN \
         mosquitto-clients \
         openssh \
         pwgen \
-        tmux \
+        stow \
+        zellij \
     \
     && apk add --no-cache --virtual .build-dependencies \
         bsd-compat-headers \
@@ -68,6 +69,15 @@ ARG CLI_VERSION
 RUN curl -Lso /usr/bin/ha \
         "https://github.com/home-assistant/cli/releases/download/${CLI_VERSION}/ha_${BUILD_ARCH}" \
     && chmod a+x /usr/bin/ha
+
+# orh dotfiles
+RUN cd / \
+    && git clone https://github.com/orhid/kropki .kropki \
+    && cd .kropki \
+    && stow ash/ \
+    && stow bottom/ \
+    && stow git/ \
+    && stow helix/
 
 # Copy data
 COPY rootfs /
