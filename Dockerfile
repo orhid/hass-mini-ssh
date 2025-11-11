@@ -81,5 +81,3 @@ RUN cd / \
     && stow bottom/ \
     && stow git/ \
     && stow helix/
-
-RUN hostname husrathandi
