@@ -74,7 +74,7 @@ RUN curl -Lso /usr/bin/ha \
 COPY rootfs /
 
 # orh dotfiles
-RUN cd / \
+RUN cd /root \
     && git clone https://github.com/orhid/kropki .kropki \
     && cd .kropki \
     && stow ash/ \
