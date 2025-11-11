@@ -1,6 +1,6 @@
 # description
 name: "mini-ssh"
-version: "0.0.3"
+version: "0.0.4"
 slug: "ssh"
 description: "minimal ssh access to home assistant"
 codenotary: 9296944+orhid@users.noreply.github.com
@@ -14,16 +14,17 @@ arch:
 
 
 # behaviour
-# image: homeassistant/{arch}-addon-ssh
+init: false # use s6
 startup: services
 
-init: false # use s6
-host_dbus: true
 hassio_api: true
 hassio_role: manager
+host_dbus: true
 
 ports:
-  22/tcp: null
+  22/tcp: 22
+ports_description:
+  22/tcp : ssh server port (empty to disable)
 map:
   - ssl:rw
   - homeassistant_config:rw
