@@ -25,3 +25,5 @@ for dir in "${DIRECTORIES[@]}"; do
     ln -s "/${dir}" "${HOME}/${dir}" \
         || bashio::log.warning "Failed linking common directory: ${dir}"
 done
+
+source ~/.ashrc
