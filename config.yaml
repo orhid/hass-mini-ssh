@@ -1,6 +1,6 @@
 # description
 name: "mini-ssh"
-version: "0.0.2"
+version: "0.0.3"
 slug: "ssh"
 description: "minimal ssh access to home assistant"
 codenotary: 9296944+orhid@users.noreply.github.com
