@@ -14,7 +14,7 @@ arch:
 
 
 # behaviour
-image: homeassistant/{arch}-addon-ssh
+# image: homeassistant/{arch}-addon-ssh
 startup: services
 
 init: false # use s6
