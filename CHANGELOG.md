@@ -1,4 +1,4 @@
 # Changelog
 
-## 0.0.1
-- initial commit, lets see if this works
+## 0.1.0
+- minimal working version
