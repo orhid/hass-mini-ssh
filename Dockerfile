@@ -70,6 +70,9 @@ RUN curl -Lso /usr/bin/ha \
         "https://github.com/home-assistant/cli/releases/download/${CLI_VERSION}/ha_${BUILD_ARCH}" \
     && chmod a+x /usr/bin/ha
 
+# Copy data
+COPY rootfs /
+
 # orh dotfiles
 RUN cd / \
     && git clone https://github.com/orhid/kropki .kropki \
@@ -79,5 +82,4 @@ RUN cd / \
     && stow git/ \
     && stow helix/
 
-# Copy data
-COPY rootfs /
+RUN hostname husrathandi
